@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import LogItem from './LogItem';
 import PreLoader from '../Layout/PreLoader';
+import { getLogs } from '../../Actions/LogAction';
 
-const Logs = () => {
-  const [logs, setLogs] = useState([]);
-  const [loading, setLoading] = useState(false);
+const Logs = ({ log: { logs, loading }, getLogs }) => {
+  // const [logs, setLogs] = useState([]);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
   }, []);
 
-  const getLogs = async () => {
-    setLoading(true);
+  // const getLogs = async () => {
+  //   setLoading(true);
 
-    const res = await fetch('/logs');
-    const data = await res.json();
+  //   const res = await fetch('/logs');
+  //   const data = await res.json();
 
-    setLogs(data);
-    setLoading(false);
-  };
+  //   setLogs(data);
+  //   setLoading(false);
+  // };
 
-  if (loading) return <PreLoader />;
+  if (loading || logs === null) return <PreLoader />;
 
   return (
     <ul className='collection with-header'>
@@ -29,7 +32,7 @@ const Logs = () => {
         <h4 className='center'>Developer Logs</h4>
       </li>
       {!loading && logs.length === 0 ? (
-        <p className='center'>There is no developer logs</p>
+        <p className='center'>There are no logs to dispaly.</p>
       ) : (
         logs.map((log) => <LogItem key={log.id} log={log} />)
       )}
@@ -37,4 +40,13 @@ const Logs = () => {
   );
 };
 
-export default Logs;
+Logs.propTypes = {
+  log: PropTypes.object.isRequired,
+  getLogs: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  log: state.log,
+});
+
+export default connect(mapStateToProps, { getLogs })(Logs);

@@ -1,0 +1,13 @@
+export const Get_Logs = 'Get_Logs';
+export const Add_Logs = 'Add_Logs';
+export const Delete_Log = 'Delete_Log';
+export const Set_Current = 'Set_Current';
+export const Clear_Current = 'Clear_Current';
+export const Update_Log = 'Update_Log';
+export const Set_Loading = 'Set_Loading';
+export const Logs_Error = 'Logs_Error';
+export const Search_Logs = 'Search_Logs';
+export const Get_Developer = 'Get_Developer';
+export const Add_Developer = 'Add_Developer';
+export const Delete_Developer = 'Delete_Developer';
+export const Developer_Error = 'Developer_Error';

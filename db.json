@@ -2,24 +2,17 @@
   "logs": [
     {
       "id": 1,
-      "message": "Created home Page",
-      "attention": false,
-      "date": "06-05-2021 07:02 am",
-      "developer": "Adil Altaf"
-    },
-    {
-      "id": 2,
-      "message": "Created Product Page",
-      "attention": false,
-      "date": "06-06-2021 06:30 pm",
-      "developer": "Adil Altaf"
-    },
-    {
-      "id": 3,
-      "message": "Created Cart Page",
+      "message": "Zoom Class batch 8 Mern",
+      "developer": "Adil Altaf",
       "attention": true,
-      "date": "06-07-2021 11:30 am",
-      "developer": "Adil Altaf"
+      "date": "2021-06-17T22:45:28.316Z"
+    },
+    {
+      "message": "Added log actions",
+      "developer": "Adil Altaf",
+      "attention": "",
+      "date": "2021-06-17T22:57:35.137Z",
+      "id": 2
     }
   ],
   "developer": [

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import { addDeveloper } from '../../Actions/DeveloperAction';
 
-const AddDeveloperModal = () => {
+const AddDeveloperModal = ({ addDeveloper }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
@@ -9,7 +12,13 @@ const AddDeveloperModal = () => {
     if (firstName === '' || lastName === '') {
       M.toast({ html: 'Please enter developers name.' });
     } else {
-      console.log(firstName, lastName);
+      const newDeveloper = {
+        firstName,
+        lastName,
+      };
+      addDeveloper(newDeveloper);
+      M.toast({ html: 'Developer Added.' });
+
       setFirstName('');
       setLastName('');
     }
@@ -25,7 +34,7 @@ const AddDeveloperModal = () => {
               type='text'
               name='firstName'
               value={firstName}
-              onChange={(e) => setFirstName(e.target.firstName)}
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <label htmlFor='firstName' className='active'>
               First Name
@@ -38,7 +47,7 @@ const AddDeveloperModal = () => {
               type='text'
               name='lastName'
               value={lastName}
-              onChange={(e) => setLastName(e.target.lastName)}
+              onChange={(e) => setLastName(e.target.value)}
             />
             <label htmlFor='lastName' className='active'>
               Last Name
@@ -59,4 +68,8 @@ const AddDeveloperModal = () => {
   );
 };
 
-export default AddDeveloperModal;
+AddDeveloperModal.propType = {
+  addDeveloper: PropTypes.func.isRequired,
+};
+
+export default connect(null, { addDeveloper })(AddDeveloperModal);
